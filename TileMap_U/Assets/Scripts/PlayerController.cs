@@ -22,6 +22,9 @@ public class PlayerController : MonoBehaviour {
 
     void FixedUpdate()
     {
+        if (Input.GetKey("escape"))
+            Application.Quit();
+
         float moveHorizontal = Input.GetAxis("Horizontal");
 
         Vector2 movement = new Vector2(moveHorizontal, 0);
