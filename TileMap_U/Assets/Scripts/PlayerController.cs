@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour {
 
     private Rigidbody2D rb2d;
     public float speed;
+    public float jumpForce;
 
 	// Use this for initialization
 	void Start () {
@@ -28,5 +29,16 @@ public class PlayerController : MonoBehaviour {
         rb2d.AddForce(movement * speed);
     
     
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if(collision.collider.tag == "Ground") {
+
+            if (Input.GetKey(KeyCode.UpArrow)) {
+
+                rb2d.AddForce(new Vector2(0, jumpForce) , ForceMode2D.Impulse);
+            }
+        }
     }
 }
