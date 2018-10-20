@@ -90,7 +90,7 @@ public class Enemy : MonoBehaviour
         Scaler.x = Scaler.x * -1;
         transform.localScale = Scaler;
     }
-
+    /*
     private void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.collider.tag == "Ground" && isGround)
@@ -107,13 +107,13 @@ public class Enemy : MonoBehaviour
                 {
                     speed = speed * -1;
                 }
-
+*/
 
 
 
 
             }
-        }
-    }
-}
+        
+    
+
 
