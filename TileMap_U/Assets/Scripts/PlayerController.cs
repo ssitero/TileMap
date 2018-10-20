@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
 
     public float speed;
     public float jumpforce;
+    public AudioClip Jump11;
+    private AudioSource source;
 
     //ground check
     private bool isOnGround;
@@ -36,13 +38,15 @@ public class PlayerController : MonoBehaviour
     void Awake()
     {
 
-        // source = GetComponent<AudioSource>();
+         source = GetComponent<AudioSource>();
 
     }
 
     private void Update()
     {
-
+        if (Input.GetButtonDown("Jump")){
+            source.PlayOneShot(Jump11, 1F);
+        }
     }
 
 

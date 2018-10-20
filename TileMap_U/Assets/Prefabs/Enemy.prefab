@@ -118,6 +118,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52f6de1cb01c34594a34faed68f90d63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 0
+  jumpforce: 0
+  groundcheck: {fileID: 0}
+  checkRadius: 0
+  allGround:
+    serializedVersion: 2
+    m_Bits: 0
+  wallHitBox: 0
+  wallHitWidth: 0
+  wallHitHeight: 0
 --- !u!212 &212153967721517542
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -150,8 +160,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 613469885
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300060, guid: ad8de5c1ced0d4794b60f5fe1b034437, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
