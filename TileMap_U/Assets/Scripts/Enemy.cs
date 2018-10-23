@@ -11,13 +11,14 @@ public class Enemy : MonoBehaviour {
     public float wallHitHeight;
     public float wallHitWidth;
 
+
 	// Use this for initialization
 	void Start () {
-		
+
 	}
 	
 	// Update is called once per frame
-	void fixedUpdate () {
+	void Update () {
 
         transform.Translate(speed * Time.deltaTime, 0, 0);
 
