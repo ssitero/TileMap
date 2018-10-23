@@ -107,6 +107,7 @@ public class PlayerController : MonoBehaviour
             {
                 // rb2d.AddForce(new Vector2(0, jumpforce), ForceMode2D.Impulse);
                 rb2d.velocity = Vector2.up * jumpforce;
+                source.PlayOneShot(Jump11, 1F);
 
 
                 // Audio stuff
