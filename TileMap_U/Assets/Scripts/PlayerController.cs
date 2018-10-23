@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public class PlayerController : MonoBehaviour
     public Transform groundcheck;
     public float checkRadius;
     public LayerMask allGround;
+    private int count;
+    public Text countText;
 
     // private float jumpTimeCounter;
     //public float jumpTime;
@@ -32,6 +35,8 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
+        count = 0;
+        countText.text = "Count: " + count.ToString();
 
     }
 
@@ -84,6 +89,8 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag ("Pickup")){
 
             other.gameObject.SetActive(false);
+            count = count + 1;
+            countText.text = "Count: " + count.ToString();
         }
 
     }

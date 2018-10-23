@@ -2,119 +2,44 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
-{
-
-    private Rigidbody2D rb2d;
-    private bool facingRight = true;
+public class Enemy : MonoBehaviour {
 
     public float speed;
-    public float jumpforce;
-
-    //ground check
-    private bool isGround;
-    public Transform groundcheck;
-    public float checkRadius;
-    public LayerMask allGround;
+    public LayerMask isOnGround;
+    public Transform wallHitBox;
     private bool wallHit;
-    public float wallHitBox;
-    public float wallHitWidth;
     public float wallHitHeight;
+    public float wallHitWidth;
 
-    // private float jumpTimeCounter;
-    //public float jumpTime;
-    //private bool isJumping;
-
-    //audio stuff
-
-
-
-
-    // Use this for initialization
-    void Start()
-    {
-        rb2d = GetComponent<Rigidbody2D>();
-
-    }
-
-    void Awake()
-    {
-
-        // source = GetComponent<AudioSource>();
-
-    }
-
-    private void Update()
-    {
-
-    }
-
-
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-
-        float moveHorizontal = Input.GetAxis("Horizontal");
-
-        //Vector2 movement = new Vector2(moveHorizontal, 0);
-
-        // rb2d.AddForce(movement * speed);
-
-        rb2d.velocity = new Vector2(moveHorizontal * speed, rb2d.velocity.y);
-
-        isGround = Physics2D.OverlapCircle(groundcheck.position, checkRadius, allGround);
-
-        Debug.Log(isGround);
+	// Use this for initialization
+	void Start () {
+		
+	}
+	
+	// Update is called once per frame
+	void fixedUpdate () {
 
         transform.Translate(speed * Time.deltaTime, 0, 0);
 
-
-
-        //stuff I added to flip my character
-        if (facingRight == false && moveHorizontal > 0)
+        wallHit = Physics2D.OverlapBox(wallHitBox.position, new Vector2(wallHitWidth, wallHitHeight), 0, isOnGround);
+        if (wallHit == true)
         {
-            Flip();
+            speed = speed * -1;
         }
-        else if (facingRight == true && moveHorizontal < 0)
-        {
-            Flip();
-        }
-
     }
 
+    private void OnCollisionStay2D(Collision2D collision){
 
-    void Flip()
-    {
-        facingRight = !facingRight;
-        Vector2 Scaler = transform.localScale;
-        Scaler.x = Scaler.x * -1;
-        transform.localScale = Scaler;
+        if (collision.collider.tag == "Player"){
+
+            Destroy(gameObject);
+        }
     }
-    /*
-    private void OnCollisionStay2D(Collision2D collision)
+
+    private void OnDrawGizmosSelected()
     {
-        if (collision.collider.tag == "Ground" && isGround)
-        {
-
-
-            if (Input.GetKey(KeyCode.UpArrow))
-            {
-                // rb2d.AddForce(new Vector2(0, jumpforce), ForceMode2D.Impulse);
-                rb2d.velocity = Vector2.up * jumpforce;
-
-                wallHit = Physics2D.OverlapBox(wallHitBox.position, new Vector2(wallHitWidth, wallHitHeight), 0, isGround);
-                if (wallHit == true)
-                {
-                    speed = speed * -1;
-                }
-
-*/
-
-
-
-
-            }
-        
-    
-
+        Gizmos.color = Color.red;
+        Gizmos.DrawCube(wallHitBox.position, new Vector3(wallHitWidth, wallHitHeight, 1));
+    }
+}
 
