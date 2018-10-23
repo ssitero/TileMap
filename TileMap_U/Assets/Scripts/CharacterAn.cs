@@ -18,7 +18,7 @@ public class CharacterAn : MonoBehaviour {
             an.SetBool("IsRunning", false);
         }
 
-        if(Input.GetKeyDown(KeyCode.Space)){
+        if (Input.GetKey(KeyCode.UpArrow)){
             an.SetTrigger("Jump");
         }
 	}
