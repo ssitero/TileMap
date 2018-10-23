@@ -44,9 +44,8 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetButtonDown("Jump")){
-            source.PlayOneShot(Jump11, 1F);
-        }
+        if (Input.GetKey("escape"))
+            Application.Quit();
     }
 
 
